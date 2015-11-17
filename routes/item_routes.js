@@ -8,6 +8,6 @@ itemRoutes.route('/')
 
 itemRoutes.route('/:item_name')
   .delete(itemsController.destroy)
-  //.put(itemsController.update)
+  .put(itemsController.update)
 
 module.exports = itemRoutes
