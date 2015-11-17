@@ -14,7 +14,6 @@ app.get('/api', function(req, res){
    res.json({message: 'The router is working'});
 })
 
-
 app.listen(port, function(){
   console.log('application server running on port: ' + port);
 })
