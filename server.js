@@ -10,7 +10,9 @@ mongoose.connect(database, function(){
     console.log('successfully connected to: ' + database);
 });
 
-
+app.get('/api', function(req, res){
+   res.json({message: 'The router is working'});
+})
 
 
 app.listen(port, function(){
