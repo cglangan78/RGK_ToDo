@@ -1,0 +1,25 @@
+{
+  "name": "rgk_todo",
+  "version": "1.0.0",
+  "description": "In class lab",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KJWBeige/RGK_ToDo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KJWBeige/RGK_ToDo/issues"
+  },
+  "homepage": "https://github.com/KJWBeige/RGK_ToDo#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.6",
+    "morgan": "^1.6.1"
+  }
+}
