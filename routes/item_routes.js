@@ -5,7 +5,9 @@ var itemRoutes        = express.Router();
 itemRoutes.route('/')
   .get(itemsController.index)
   .post(itemsController.create)
-  //.delete(itemsController.destroy)
+
+itemRoutes.route('/:item_name')
+  .delete(itemsController.destroy)
   //.put(itemsController.update)
 
 module.exports = itemRoutes
