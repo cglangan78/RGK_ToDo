@@ -36,17 +36,27 @@ $(list).on('click', '.glyphicon-star', function() {
 
 // Form submission prevents default behavior and appends new list item to the top
 
-$('form').on('submit', function(event) {
-  event.preventDefault();
-  var newItem = $('#todo'),
+$('form').on('post', function(event) {
+  //event.preventDefault();
+  var newItem = $('#todo');
+  $.ajax({
+    url: '/api',
+    method: 'POST',
+    data: newItem.val(),
+    dataType: 'application/json',
+    success: function(data){
       listItem = '<p>' +
-      '<input type="checkbox"><i class="glyphicon glyphicon-star"></i>' +
-        '<span>' + newItem.val() + '</span>' +
-        '<i class="glyphicon glyphicon-remove"></i>' +
-      '</p>';
-  if (newItem.val() !== '') {
-    $(list).prepend(listItem);
-    console.log(newItem.val());
-    newItem.val('');
-  }
+        '<input type="checkbox"><i class="glyphicon glyphicon-star"></i>' +
+          '<span>' + newItem.val() + '</span>' +
+          '<i class="glyphicon glyphicon-remove"></i>' +
+          '</p>';
+      if (newItem.val() !== '') {
+        $(list).prepend(listItem);
+        console.log(newItem.val());
+        newItem.val('');
+      }
+    }
+  })
 });
+
+//adding AJAX
