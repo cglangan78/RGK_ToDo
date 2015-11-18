@@ -1,3 +1,4 @@
+var bodyParser  = require('body-parser');
 var Item  = require('../models/todo.js');
 
 //create index action
@@ -11,7 +12,8 @@ function index(req, res){
 //method to create an item
 function create(req, res){
   console.log('Creating an item');
-  var item = new Item(req.body.item);
+  console.log(req.body);
+  var item = new Item();
   item.item_name = req.body.item_name;
   item.save(function(err){
     if(err) console.error(err);
