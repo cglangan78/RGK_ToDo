@@ -1,13 +1,23 @@
 $(document).ready(function(){
   // Add functionality to the to-do list application
   var list = $('.list');
-  // Remove item
 
+
+  // Remove item
   $(list).on('click', '.glyphicon-remove', function() {
-    $(this).parent().remove();
+   var itemName = $('#todo').val();
+    $.ajax({
+      url: '/api/' + itemName.item_name,
+      method: 'DELETE',
+      success: function(){
+        console.log("worked")
+    }
+   })
+  $(this).parent().remove();
   });
 
-  // Finish list item; task will receive strikethrough, move task to the end and 'x' will be replaced with green check mark; unchecking will remove strikethrough.
+  // Finish list item; task will receive strikethrough, move task to the end and
+  //'x' will be replaced with green check mark; unchecking will remove strikethrough.
 
   $(list).on('click', 'input[type="checkbox"]', function() {
     var $span = $(this).parent().find('span'),
@@ -48,11 +58,9 @@ $(document).ready(function(){
     $.ajax({
       url: '/api',
       method: 'POST',
-      dataType: 'json',
       data: JSON.stringify(newItem),
       contentType: 'application/json',
       success: function(data){
-        console.log(data);
         var listItem = '<p>' +
           '<input type="checkbox"><i class="glyphicon glyphicon-star"></i>' +
             '<span>' + newItem.item_name + '</span>' +
