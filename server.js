@@ -12,6 +12,7 @@ mongoose.connect(database, function(){
 });
 
 app.use(bodyParser.json())
+app.use(express.static('public'));
 
 app.get('/api', function(req, res){
    res.json({message: 'The router is working'});
