@@ -3,18 +3,28 @@ $(document).ready(function(){
   var list = $('.list');
 
 
+
   // Remove item
   $(list).on('click', '.glyphicon-remove', function() {
-   var itemName = $('#todo').val();
+      var itemName = $('#item-remove').text();
+      var deleteItem = {
+        item_name: itemName
+      }
+    console.log(deleteItem);
+    console.log(itemName);
+    console.log(deleteItem.item_name);
+
     $.ajax({
-      url: '/api/' + itemName.item_name,
+      url: '/api/' + deleteItem.item_name,
       method: 'DELETE',
-      success: function(){
-        console.log("worked")
-    }
-   })
-  $(this).parent().remove();
+      success: function(url){
+        console.log("reaching success function on delete")
+        console.log(url);
+      }
+    })
+   $(this).parent().remove();
   });
+
 
   // Finish list item; task will receive strikethrough, move task to the end and
   //'x' will be replaced with green check mark; unchecking will remove strikethrough.
@@ -48,13 +58,13 @@ $(document).ready(function(){
   // Form submission prevents default behavior and appends new list item to the top
 
   $('#add-item').on('submit', function(event) {
-    console.log('submitted');
+    // console.log('submitted');
     event.preventDefault();
     var itemName = $('#todo').val();
     var newItem = {
       item_name: itemName
     }
-    console.log(newItem);
+    // console.log(newItem);
     $.ajax({
       url: '/api',
       method: 'POST',
@@ -63,8 +73,8 @@ $(document).ready(function(){
       success: function(data){
         var listItem = '<p>' +
           '<input type="checkbox"><i class="glyphicon glyphicon-star"></i>' +
-            '<span>' + newItem.item_name + '</span>' +
-            '<i class="glyphicon glyphicon-remove"></i>' +
+            '<span id="item-remove">' + newItem.item_name + '</span>' +
+            '<i class="glyphicon glyphicon-remove "></i>' +
             '</p>';
         if (data !== '') {
           $('.list').prepend(listItem);

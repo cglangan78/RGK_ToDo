@@ -26,7 +26,7 @@ function destroy(req, res){
   Item.findOneAndRemove({item_name: req.params.item_name}, function(err){
     if(err) console.error(err)
     console.log(res)
-    res.json({success: true});
+    res.json({message: "Item was deleted"});
   })
 }
 
