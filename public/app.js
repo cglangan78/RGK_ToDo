@@ -37,7 +37,7 @@ $(document).ready(function(){
 
   // Form submission prevents default behavior and appends new list item to the top
 
-  $('.btn').on('click', function(event) {
+  $('#add-item').on('submit', function(event) {
     console.log('submitted');
     event.preventDefault();
     var itemName = $('#todo').val();
@@ -48,8 +48,9 @@ $(document).ready(function(){
     $.ajax({
       url: '/api',
       method: 'POST',
-      data: newItem,
       dataType: 'json',
+      data: JSON.stringify(newItem),
+      contentType: 'application/json',
       success: function(data){
         console.log(data);
         // var listItem = '<p>' +

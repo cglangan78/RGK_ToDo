@@ -17,7 +17,7 @@ function create(req, res){
   item.item_name = req.body.item_name;
   item.save(function(err){
     if(err) console.error(err);
-    res.json({success: true, message: 'Item was created'});
+    res.json({success: true, message: 'Item was created', _id: item._id});
   })
 }
 
