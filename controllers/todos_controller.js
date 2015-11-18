@@ -18,3 +18,8 @@ function create(req, res){
     res.json({success: true, message: 'Item was created'});
   })
 }
+
+
+module.exports = {
+  index: index
+}

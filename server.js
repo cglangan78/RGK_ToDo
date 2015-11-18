@@ -5,7 +5,8 @@ var logger      = require('morgan');
 var bodyParser  = require('body-parser');
 var port        = process.env.PORT || 3000;
 var database    = 'mongodb://localhost/rgk_todo';
-// var itemRoutes  = require('./routes/item_routes.js')
+var Item        = require('./models/todo.js');
+var itemRoutes  = require('./routes/item_routes.js');
 
 mongoose.connect(database, function(){
     console.log('successfully connected to: ' + database);
@@ -13,11 +14,13 @@ mongoose.connect(database, function(){
 
 app.use(express.static('public'));
 
-app.get('/api', function(req, res){
-   res.json({message: 'The router is working'});
-})
+// app.get('/api', function(req, res){
+//     Item.find({}, function(err, result){
+//       res.json(result);
+//     });
+// });
 
-// app.use('/api', itemRoutes);
+app.use('/api', itemRoutes);
 
 app.listen(port, function(){
   console.log('application server running on port: ' + port);
