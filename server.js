@@ -5,13 +5,18 @@ var logger      = require('morgan');
 var bodyParser  = require('body-parser');
 var port        = process.env.PORT || 3000;
 var database    = 'mongodb://localhost/rgk_todo';
+<<<<<<< HEAD
 var Item        = require('./models/todo.js');
 var itemRoutes  = require('./routes/item_routes.js');
+=======
+var itemRoutes  = require('./routes/item_routes.js')
+>>>>>>> 345124dd768904ca21b27be523db057aaf3a13bc
 
 mongoose.connect(database, function(){
     console.log('successfully connected to: ' + database);
 });
 
+app.use(bodyParser.json())
 app.use(express.static('public'));
 
 // app.get('/api', function(req, res){
