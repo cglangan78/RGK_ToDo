@@ -1,3 +1,4 @@
+var bodyParser  = require('body-parser');
 var Item  = require('../models/todo.js');
 
 //create index action
@@ -11,11 +12,12 @@ function index(req, res){
 //method to create an item
 function create(req, res){
   console.log('Creating an item');
-  var item = new Item(req.body.item);
+  console.log(req.body);
+  var item = new Item();
   item.item_name = req.body.item_name;
   item.save(function(err){
     if(err) console.error(err);
-    res.json({success: true, message: 'Item was created'});
+    res.json({success: true, message: 'Item was created', _id: item._id});
   })
 }
 
@@ -24,7 +26,7 @@ function destroy(req, res){
   Item.findOneAndRemove({item_name: req.params.item_name}, function(err){
     if(err) console.error(err)
     console.log(res)
-    res.json({success: true});
+    res.json({message: "Item was deleted"});
   })
 }
 
