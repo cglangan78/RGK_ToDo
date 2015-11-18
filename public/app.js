@@ -53,15 +53,15 @@ $(document).ready(function(){
       contentType: 'application/json',
       success: function(data){
         console.log(data);
-        // var listItem = '<p>' +
-        //   '<input type="checkbox"><i class="glyphicon glyphicon-star"></i>' +
-        //     '<span>' + data.item_name + '</span>' +
-        //     '<i class="glyphicon glyphicon-remove"></i>' +
-        //     '</p>';
-        // if (data !== '') {
-        //   $('.list').prepend(listItem);
-        //   $('#todo').val('');
-        // }
+        var listItem = '<p>' +
+          '<input type="checkbox"><i class="glyphicon glyphicon-star"></i>' +
+            '<span>' + newItem.item_name + '</span>' +
+            '<i class="glyphicon glyphicon-remove"></i>' +
+            '</p>';
+        if (data !== '') {
+          $('.list').prepend(listItem);
+          $('#todo').val('');
+        }
       }
     })
   });
